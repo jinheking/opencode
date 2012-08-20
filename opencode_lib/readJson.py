@@ -11,14 +11,16 @@ class readJson(object):
     classdocs
     '''
 
-
-    def __init__(self):
+    urllink=''
+    def __init__(self,url):
         '''
         Constructor
         '''
+        self.urllink=url
     
     def read(self):
-        url='http://chart.chinacpw.com/index.php?s=/Opencode'
+#        url='http://chart.chinacpw.com/index.php?s=/Opencode'
+        url=self.urllink
         page=urllib.urlopen(url)
         json_data=page.read()
         dict=json.JSONDecoder().decode(json_data)['data']

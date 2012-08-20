@@ -32,7 +32,12 @@ class readClosed(object):
         '''
         today=datetime.date.today()
         return str(today)[0:4]
-    
+    def getYear(self):
+        '''
+        返回今天是那年
+        '''
+        today=datetime.date.today()
+        return str(today)[0:4]
     def readToday(self):
         '''
         读取今天的日期
