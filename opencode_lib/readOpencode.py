@@ -148,7 +148,7 @@ class readOpencode(object):
         '''
         dict=self.getDict("3D")
         dict['characteristic']=r'和值：'+str(dict['sum'])+r' 奇偶：'+dict['jo']+r' 大小：'+dict['dx']
-        dict['strrecommend']=r'和值：'+self.getRecomend(dict['sums'])+r' 复试推荐：'+dict['recommend']
+        dict['strrecommend']=r'和值：'+self.getRecomend(dict['sums'])+r' 复式推荐：'+dict['recommend']
         return dict
         
     def getP3(self):
@@ -157,7 +157,7 @@ class readOpencode(object):
         '''
         dict=self.getDict("P3")
         dict['characteristic']=r'和值：'+str(dict['sum'])+r' 奇偶：'+dict['jo']+r' 大小：'+dict['dx']
-        dict['strrecommend']=r'和值：'+self.getRecomend(dict['sums'])+r' 复试推荐：'+dict['recommend']
+        dict['strrecommend']=r'和值：'+self.getRecomend(dict['sums'])+r' 复式推荐：'+dict['recommend']
         return dict
     
     def getCJDLT(self):

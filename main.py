@@ -8,10 +8,13 @@ Created on 2012-8-17
 import opencode_lib.readJson
 import opencode_lib 
 def main():
-    print opencode_lib.__abstract__ + opencode_lib.__version__
+    msg=opencode_lib.__abstract__ + opencode_lib.__version__
+#    print unicode(msg,"utf-8").encode('gb18030')
+    print msg
+    
     readJson=opencode_lib.readJson(r'http://chart.chinacpw.com/index.php?s=/Opencode')
     dict=readJson.read()
-    print dict
+#    print dict
     
     readClosed=opencode_lib.readClosed();
     if readClosed.judgeSpring()==False:
@@ -33,3 +36,4 @@ def main():
     
 if __name__ == '__main__':
      main()
+     print "Over"
