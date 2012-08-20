@@ -17,14 +17,19 @@ def main():
     if readClosed.judgeSpring()==False:
         readOpencode=opencode_lib.readOpencode(dict,readClosed.getYear())
         #readOpencode.getIssue('3D')
-        readOpencode.get3D()
-        readOpencode.getP3()
+        db=opencode_lib.dbOperation(r'./config.ini')
+        if db.judgeExist(str(readOpencode.getIssue('3D')), "3D"):
+            db.dbInsert(readOpencode.get3D(),'3D')
+        if db.judgeExist(str(readOpencode.getIssue('P3')), "P3"):
+            db.dbInsert(readOpencode.getP3(),'P3')
         #print readOpencode.getRandom(0,9,3,True)
         
         if readClosed.judgeSsqOpen():#判断是不是双色球的开机日
-            print readOpencode.getSSQ()
+            if db.judgeExist(str(readOpencode.getIssue('SSQ')), "SSQ"):
+                db.dbInsert(readOpencode.getSSQ(), "SSQ")
         if readClosed.judgeCjdltOpen():#判断是不是超级大乐透的开机日
-            print readOpencode.getCJDLT()
+            if db.judgeExist(str(readOpencode.getIssue('CJDLT')), "CJDLT"):
+                db.dbInsert(readOpencode.getCJDLT(), "CJDLT")
     
 if __name__ == '__main__':
      main()

@@ -95,7 +95,11 @@ class readOpencode(object):
         return result
     
     def getRecomend(self,list,bit=1):
-        '取得推荐数组'
+        '''
+               取得推荐数组
+        @param list list:和值数组
+        @return: 返回字符串
+        '''
         result=''
         for  n in list:
             result+=str(n).zfill(bit)
@@ -134,7 +138,7 @@ class readOpencode(object):
         dx=self. getDX(list,5)
         dict['dx']=dx
         dict['sum']=self.getSum(list)
-        dict['sums']=self.getRandom(0,27,4)
+        dict['sums']=sorted(self.getRandom(1,26,4)) #和值推荐应该是0-27但是0、27出现的概率太低
         dict['recommend']=self.getRecomend(sorted(self.getRandom(0,9,6,False)))
         return dict
                          
@@ -143,6 +147,8 @@ class readOpencode(object):
         计算3D
         '''
         dict=self.getDict("3D")
+        dict['characteristic']=r'和值：'+str(dict['sum'])+r' 奇偶：'+dict['jo']+r' 大小：'+dict['dx']
+        dict['strrecommend']=r'和值：'+self.getRecomend(dict['sums'])+r' 复试推荐：'+dict['recommend']
         return dict
         
     def getP3(self):
@@ -150,6 +156,8 @@ class readOpencode(object):
         计算3D
         '''
         dict=self.getDict("P3")
+        dict['characteristic']=r'和值：'+str(dict['sum'])+r' 奇偶：'+dict['jo']+r' 大小：'+dict['dx']
+        dict['strrecommend']=r'和值：'+self.getRecomend(dict['sums'])+r' 复试推荐：'+dict['recommend']
         return dict
     
     def getCJDLT(self):
@@ -172,6 +180,8 @@ class readOpencode(object):
         dict['sum']=self.getSum(list)
         dict['recommend']=self.getRecomend(sorted(self.getRandom(1,35,10)),2)
         dict['recommendBack']=self.getRecomend(sorted(self.getRandom(1,12,4)),2)
+        dict['characteristic']=r'和值：'+str(dict['sum'])+r' 奇偶：'+dict['jo']
+        dict['strrecommend']=r'前区：'+dict['recommend']+r'  后区：'+dict['recommendBack']
         return dict
     
     def getSSQ(self):
@@ -194,4 +204,6 @@ class readOpencode(object):
         dict['sum']=self.getSum(list)
         dict['recommend']=self.getRecomend(sorted(self.getRandom(1,33,10)),2)
         dict['recommendBack']=self.getRecomend(sorted(self.getRandom(1,16,4)),2)
+        dict['characteristic']=r'和值：'+str(dict['sum'])+r' 奇偶：'+dict['jo']
+        dict['strrecommend']=r'红球：'+dict['recommend']+r'  蓝球：'+dict['recommendBack']
         return dict
