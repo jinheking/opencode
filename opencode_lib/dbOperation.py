@@ -9,6 +9,9 @@ import MySQLdb
 import MySQLdb.cursors
 import ConfigParser
 import time
+import opencode_lib.weiboOperation
+import sys,re,urllib2,cookielib
+import urllib,httplib,re
 class dbOperation(object):
     '''
     数据库操作类
@@ -72,9 +75,26 @@ class dbOperation(object):
                        list['strrecommend'],
                        time.strftime("%Y-%m-%d %X",time.localtime())
                        ])
-        print valdata
+        #print valdata
+		
         cursor.executemany(strsql, valdata)
         self.conn.commit()
         cursor.close()
+		#微博发送
+		strmsg=r"第"
+		strmsg+=list['issue']
+		strmsg+=type
+		strmsg+=r':'
+		strmsg+=r'开机号:'
+		strmsg+=list['number']
+		strmsg+=r'。特征:'
+		strmsg+=list['characteristic']
+		strmsg+=r'。推荐:'
+		strmsg+=list['strrecommend']
+		strmsg+=r'。'
+		string = unicode(strmsg,r"utf-8")
+		strmsg=urllib.quote(string.encode("utf-8"))
+		weibo=opencode_lib.weiboOperation()
+		weibo.get_code(strmsg)
 #        self.conn.close()    
         
