@@ -30,7 +30,7 @@ class readJson(object):
     def readLottery(self,type,issue):
          params = urllib.urlencode({'type':type,'issue':issue})      #这里组织参数
          print params
-         sock = urllib.urlopen("http://chart.chinacpw.com/index.php?s=/Opencode/readlottery/", params)  # 发送请求，并把参数传过去
+         sock = urllib.urlopen("http://chart.lottery.com/index.php?s=/Opencode/readlottery/", params)  # 发送请求，并把参数传过去
          html = sock.read()
          sock.close()
          print html
