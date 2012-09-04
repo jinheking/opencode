@@ -12,7 +12,7 @@ def main():
 #    print unicode(msg,"utf-8").encode('gb18030')
     print msg
     
-    readJson=opencode_lib.readJson(r'http://chart.chinacpw.com/index.php?s=/Opencode')
+    readJson=opencode_lib.readJson(r'http://chart.lottery.com/index.php?s=/Opencode')
     dict=readJson.read()
 #    print dict
     
