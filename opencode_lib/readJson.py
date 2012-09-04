@@ -19,7 +19,6 @@ class readJson(object):
         self.urllink=url
     
     def read(self):
-#        url='http://chart.chinacpw.com/index.php?s=/Opencode'
         url=self.urllink
         page=urllib.urlopen(url)
         json_data=page.read()
