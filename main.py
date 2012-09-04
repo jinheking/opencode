@@ -23,6 +23,8 @@ def main():
         db=opencode_lib.dbOperation(r'./config.ini')
         if db.judgeExist(str(readOpencode.getIssue('3D')), "3D"):
             db.dbInsert(readOpencode.get3D(),'3D')
+        else:
+            readJson.readLottery(r"3D",dict['3D'])
         if db.judgeExist(str(readOpencode.getIssue('P3')), "P3"):
             db.dbInsert(readOpencode.getP3(),'P3')
         #print readOpencode.getRandom(0,9,3,True)
